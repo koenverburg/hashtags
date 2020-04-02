@@ -1,0 +1,12 @@
+import { call, put } from 'redux-saga/effects'
+import {{ properCase name }}Api from '../{{ properCase name }}.api'
+import * as actions from '../redux/{{ properCase name }}.actions'
+
+export default function* get{{ properCase name }}Data () {
+  const { response, error } = yield call({{ properCase name }}Api.index)
+  if (response) {
+    yield put(actions.{{ lowerCase name }}DataFetchingFulfilled(response.data))
+  } else {
+    yield put(actions.{{ lowerCase name }}DataFetchingRejected(error))
+  }
+}

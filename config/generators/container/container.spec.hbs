@@ -1,0 +1,10 @@
+import React from 'react'
+import {{ properCase name }} from '../'
+
+describe('CONTAINER - <{{ properCase name }} />', () => {
+  it('will render', () => {
+    const wrapper = shallow(<{{ properCase name }} />)
+
+    expect(wrapper).toMatchSnapshot()
+  })
+})

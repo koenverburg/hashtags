@@ -1,0 +1,16 @@
+import { statuses, ActionUtil } from '@utils'
+import { {{ properCase name }}DataConstants } from './{{ properCase name }}.constants'
+
+export const init{{ properCase name }}DataFetching = ActionUtil.action({{ properCase name }}DataConstants.PENDING, statuses.PENDING)
+export const {{ lowerCase name }}DataFetchingCanceled = ActionUtil.action(
+  {{ properCase name }}DataConstants.CANCELED,
+  statuses.CANCELED,
+)
+export const {{ lowerCase name }}DataFetchingFulfilled = ActionUtil.actionWithPayload(
+  {{ properCase name }}DataConstants.FULFILLED,
+  statuses.FULFILLED,
+)
+export const {{ lowerCase name }}DataFetchingRejected = ActionUtil.actionWithPayloadAsError(
+  {{ properCase name }}DataConstants.REJECTED,
+  statuses.REJECTED,
+)

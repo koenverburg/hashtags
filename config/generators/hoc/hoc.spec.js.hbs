@@ -1,0 +1,10 @@
+import React from 'react'
+import {{ properCase name }} from '../'
+
+describe('HOC - <{{ properCase name }} />', () => {
+  it('will render', () => {
+    const hoc = shallow(<{{ properCase name }} />)
+
+    expect(hoc).toMatchSnapshot()
+  })
+})

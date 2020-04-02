@@ -1,0 +1,36 @@
+import { Selector } from 'redux-testkit'
+
+import * as selectors from '../redux/{{ properCase name }}.selectors'
+
+describe('selectors - {{ properCase name }}', () => {
+  /* GENERATOR-SELECTOR-TEST-START */
+
+  it('should select the error from the state', () => {
+    const state = { {{ lowerCase name }}: { error: '__TESTVALUE__' } }
+    const result = '__TESTVALUE__'
+
+    Selector(selectors.errorSelector)
+      .expect(state)
+      .toReturn(result)
+  })
+
+  it('should select the data from the state', () => {
+    const state = { {{ lowerCase name }}: { data: '__TESTVALUE__' } }
+    const result = '__TESTVALUE__'
+
+    Selector(selectors.dataSelector)
+      .expect(state)
+      .toReturn(result)
+  })
+
+  it('should select the status from the state', () => {
+    const state = { {{ lowerCase name }}: { status: '__TESTVALUE__' } }
+    const result = '__TESTVALUE__'
+
+    Selector(selectors.statusSelector)
+      .expect(state)
+      .toReturn(result)
+  })
+
+  /* GENERATOR-SELECTOR-TEST-END */
+})

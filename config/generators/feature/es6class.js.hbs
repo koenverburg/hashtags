@@ -1,0 +1,48 @@
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from './redux/{{ properCase name }}.actions'
+import * as selectors from './redux/{{ properCase name }}.selectors'
+import { statuses } from '@utils'
+import { IBaseProps } from '@interfases';
+
+interface I{{ properCase name}}Props extends IBaseProps {
+  init{{ properCase name }}DataFetching(): void
+}
+
+class {{ properCase name }} extends Component<I{{ properCase name}}Props> {
+  componentDidMount() {
+    const { init{{ properCase name }}DataFetching } = this.props
+    init{{ properCase name }}DataFetching()
+  }
+
+  render () {
+    const { children, data, status, error } = this.props
+    return (
+      <Fragment>
+        {children}
+        {status === statuses.FULFILLED && <p>there is data </p>}
+        {status === statuses.REJECTED && <p>Is the server online?</p>}
+      </Fragment>
+    )
+  }
+}
+
+function mapStateToProps (state) {
+  return {
+    data: selectors.dataSelector(state),
+    error: selectors.errorSelector(state),
+    status: selectors.statusSelector(state),
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  const { init{{ properCase name }}DataFetching } = bindActionCreators(actions, dispatch)
+  return { init{{ properCase name }}DataFetching }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)({{ properCase name }})
+

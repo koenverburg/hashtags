@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component render a label 1`] = `
+<section>
+  <h1>
+    Hiii static site gen
+  </h1>
+</section>
+`;

@@ -1,0 +1,41 @@
+import { statuses } from '@utils'
+import { {{ properCase name }}DataConstants } from './{{ properCase name }}.constants'
+
+export const initialState = {
+  data: null,
+  error: null,
+  status: statuses.IDLE,
+}
+
+export function {{ properCase name }}Reducer(state = initialState, action) {
+  switch (action.type) {
+    case {{ properCase name }}DataConstants.PENDING:
+      return {
+        ...state,
+        status: action.status,
+      }
+
+    case {{ properCase name }}DataConstants.FULFILLED:
+      return {
+        ...state,
+        data: action.payload,
+        status: action.status,
+      }
+
+    case {{ properCase name }}DataConstants.REJECTED:
+      return {
+        ...state,
+        error: action.payload,
+        status: action.status,
+      }
+
+    case {{ properCase name }}DataConstants.CANCELED:
+      return {
+        ...state,
+        status: action.status,
+      }
+
+    default:
+      return state
+  }
+}

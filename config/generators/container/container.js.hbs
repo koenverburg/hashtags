@@ -1,0 +1,18 @@
+import React, { Component, Fragment } from 'react'
+import { Switch, Route } from 'react-router-dom'
+
+import { PageTitle } from '@hoc'
+
+class {{ properCase name }} extends Component {
+  render() {
+    return (
+      <section className="container-fluid">
+        <Switch>
+          <Route path="/" component={RantOverview} />
+        </Switch>
+      </section>
+    )
+  }
+}
+
+export default PageTitle({ title: '{{ properCase name }}' })({{ properCase name }})
