@@ -1,9 +1,9 @@
 import React from 'react'
 import ErrorPage from 'next/error'
-// import { withMobx } from '@hoc'
+import { withMobx } from '@hoc'
 import App, { AppProps, AppInitialProps, AppContext } from 'next/app'
 import { Provider, useStaticRendering } from 'mobx-react'
-// import * as getStores from '../Stores'
+import * as getStores from '../Stores'
 
 // @ts-ignore
 const isServer = !process.browser
@@ -13,19 +13,19 @@ interface IRootElement {
   store: object[] | undefined
 }
 
-type RootElementProps = AppInitialProps & AppProps & IRootElement
+type RootElementProps = AppInitialProps & AppProps & IRootElement & { store: object }
 
 class RootElement extends App<RootElementProps> {
 
-  // public static async getInitialProps({ Component, ctx }: AppContext) {
-  //   let pageProps = {}
+  public static async getInitialProps({ Component, ctx }: AppContext) {
+    let pageProps = {}
 
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx)
-  //   }
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
 
-  //   return { pageProps }
-  // }
+    return { pageProps }
+  }
 
   public render() {
     const { Component, pageProps, store } = this.props
@@ -43,5 +43,5 @@ class RootElement extends App<RootElementProps> {
   }
 }
 
-// export default withMobx(getStores)(RootElement)
-export default RootElement
+export default withMobx(getStores)(RootElement)
+// export default RootElement

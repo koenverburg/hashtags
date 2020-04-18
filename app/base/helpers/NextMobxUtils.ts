@@ -3,7 +3,7 @@ import { isServer } from '../constants/index'
 const __NEXT_MOBX_STORE__ = new Map()
 
 // getCounterStore => counterStore => counter
-export const getKeyNameStore = name => name.replace(/^get(.)/, (match, p1) => p1.toLowerCase()).replace('Store', '')
+export const getKeyNameStore = (name: string) => name.replace(/^get(.)/, (match, p1) => p1.toLowerCase()).replace('Store', '')
 
 export const mapToJson = (map: any) => {
   try {

@@ -26,7 +26,7 @@ export abstract class StoreHelper<EntityType extends IHelperLength> extends Stat
 
   public abstract fetch(): void
 
-  public update(data: object = {}): void {
+  @action public update(data: object = {}): void {
     // tslint:disable-next-line:forin
     for (const prop in data) {
       this[prop] = data[prop]
@@ -34,7 +34,11 @@ export abstract class StoreHelper<EntityType extends IHelperLength> extends Stat
   }
 
   public any(): boolean {
-    if (!!this.entities.length) {
+    if (!this.entities) {
+      return false
+    }
+
+    if (this.entities.length) {
       return this.entities.length > 0
     }
 

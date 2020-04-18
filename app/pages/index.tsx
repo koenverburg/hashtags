@@ -8,8 +8,8 @@ export const config = { amp: 'hybrid' }
 const Home = () => (
   <main>
     <article>
-      <h1>The base</h1>
-      <p>The base is my boilerplate in which I have a bullet prove framework where I can work with for my projects.</p>
+      <h1>Hashtag de-Duplication </h1>
+      <p>Simple to use web app that dedups Hashtags</p>
     </article>
   </main>
 )

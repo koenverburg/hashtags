@@ -5,7 +5,7 @@ interface IProps {
 
 }
 
-const {{ properCase name }}: React.FunctionComponent<IProps> = (props) =>{
+const HashTagCollector: React.FunctionComponent<IProps> = (props) =>{
   return (
     <div>
       {props.children}
@@ -13,4 +13,4 @@ const {{ properCase name }}: React.FunctionComponent<IProps> = (props) =>{
   )
 }
 
-export { {{ properCase name }} }
+export { HashTagCollector }

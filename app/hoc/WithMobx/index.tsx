@@ -2,7 +2,7 @@ import React, { Component, ComponentType } from 'react'
 import { NextMobx } from '@helpers'
 
 export const withMobx = (getStores: object = {}) => (App: ComponentType<{ store: object }>) => {
-  class WithMobxInternalComponent extends Component<React.Props<any>> {
+  class WithMobxInternalComponent extends Component {
     public static async getInitialProps(context: { ctx: any }) {
       let appProps = {}
 
