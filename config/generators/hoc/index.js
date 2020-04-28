@@ -18,13 +18,13 @@ module.exports = {
     return [
       {
         type: 'add',
-        path: path.resolve(`./app/react/hoc/${toTitleCase(data.name)}/index.tsx`),
+        path: path.resolve(`./app/hoc/${toTitleCase(data.name)}/index.tsx`),
         templateFile: './hoc/hoc.js.hbs',
         abortOnFail: true
       },
       {
         type: 'add',
-        path: path.resolve(`./app/react/hoc/${toTitleCase(data.name)}/__tests__/${toTitleCase(data.name)}.spec.tsx`),
+        path: path.resolve(`./app/hoc/${toTitleCase(data.name)}/__tests__/${toTitleCase(data.name)}.spec.tsx`),
         templateFile: './hoc/hoc.spec.js.hbs',
         abortOnFail: true
       },
@@ -32,7 +32,7 @@ module.exports = {
       // index files
       {
         type: 'modify',
-        path: path.resolve(`./app/react/hoc/index.ts`),
+        path: path.resolve(`./app/hoc/index.ts`),
         pattern: /(\/\* GENERATOR-IMPORT \*\/)/g,
         template: trimTemplateFile('./config/generators/component/import.js.hbs'),
         abortOnFail: false

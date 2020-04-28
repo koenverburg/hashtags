@@ -1,0 +1,34 @@
+import Axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios'
+import { IRepository } from '../../base/interfaces/IRepository'
+import { {{ properCase name }}Model } from './models/{{ properCase name }}.model'
+
+export class {{ properCase name }}Repository implements IRepository<{{ properCase name }}Model> {
+  constructor() {
+    const config = {
+      baseURL: process.env.{{ upperCase name }}_API,
+    }
+    this.http = Axios.create(config)
+  }
+
+  private http: AxiosInstance
+
+  public list(): any {
+    return this.http
+      .get()
+      .then((response: AxiosResponse<{{ properCase name }}Model>) => ({ response }))
+      .catch((error: AxiosError) => ({ error }))
+  }
+
+  public add(entity: any) {
+    throw new Error('Method not implemented.')
+  }
+  public delete(entity: any) {
+    throw new Error('Method not implemented.')
+  }
+  public update(entity: any) {
+    throw new Error('Method not implemented.')
+  }
+  public find(id: number) {
+    return new {{ properCase name }}Model()
+  }
+}

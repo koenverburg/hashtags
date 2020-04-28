@@ -1,8 +1,0 @@
-import { takeLatest } from 'redux-saga/effects'
-import { {{ properCase name }}DataConstants } from '../redux/{{ properCase name }}.constants'
-
-import get{{ properCase name }}Data from './{{ properCase name }}.get.saga'
-
-export default function* {{ properCase name }}sWatcher() {
-  yield takeLatest({{ properCase name }}DataConstants.PENDING, get{{ properCase name }}Data)
-}

@@ -1,0 +1,32 @@
+import { {{ properCase name }}Repository } from '../{{ properCase name }}.repository'
+import { {{ properCase name }}Model } from '../models/{{ properCase name }}.model'
+
+describe('{{ properCase name }} - repository', () => {
+  let repository: {{ properCase name }}Repository
+
+  beforeAll(() => {
+    repository = new {{ properCase name }}Repository()
+  })
+
+  it('should find an entity', () => {
+    expect(repository.find(1)).toEqual(new {{ properCase name }}Model())
+  })
+
+  it('should return a response', () => {
+    expect(repository.list()).toEqual(Promise.prototype)
+  })
+
+  describe('follows the Repository pattern', () => {
+    it("has an 'List' method", () => expect(repository.list).toBeDefined())
+    it("has an 'Add' method", () => expect(repository.add).toBeDefined())
+    it("has an 'Delete' method", () => expect(repository.delete).toBeDefined())
+    it("has an 'Update' method", () => expect(repository.update).toBeDefined())
+    it("has an 'Find' method", () => expect(repository.find).toBeDefined())
+  })
+
+  // describe("throws 'Method not implemented.'", () => {
+  //   it("should throw a 'Method not implemented.'", () => {
+  //     expect(repository.add(new {{ properCase name }}Model())).toBeFalsy()
+  //   })
+  // })
+})

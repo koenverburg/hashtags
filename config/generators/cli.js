@@ -1,15 +1,11 @@
 const hocGenerator = require('./hoc/index')
 const featureGenerator = require('./feature/index')
 const componentGenerator = require('./component/index')
-const containerGenerator = require('./container/index')
-const componentWithDataGenerator = require('./componentsWithData/index')
 
 module.exports = (plop) => {
   plop.setGenerator('hoc', hocGenerator)
   plop.setGenerator('feature', featureGenerator)
   plop.setGenerator('component', componentGenerator)
-  plop.setGenerator('container', containerGenerator)
-  plop.setGenerator('graphcomponent', componentWithDataGenerator)
 
   plop.addHelper('uppercase', (text) => text.toUpperCase())
 
