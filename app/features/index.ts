@@ -1,1 +1,1 @@
-export { Domain } from './example'
+export { Collector } from './Collector'
