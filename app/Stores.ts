@@ -1,1 +1,1 @@
-export { getDomainStore } from './features/example/Domain.store'
+export { getCollectorStore } from './features/Collector/Collector.store'
