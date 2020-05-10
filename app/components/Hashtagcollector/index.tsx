@@ -1,16 +1,10 @@
 import React from 'react'
 
 // tslint:disable-next-line: no-empty-interface
-interface IProps {
+interface IProps {}
 
-}
-
-const HashTagCollector: React.FunctionComponent<IProps> = (props) =>{
-  return (
-    <div>
-      {props.children}
-    </div>
-  )
+const HashTagCollector: React.FunctionComponent<IProps> = props => {
+  return <div>{props.children}</div>
 }
 
 export { HashTagCollector }
