@@ -3,7 +3,7 @@ import ErrorPage from 'next/error'
 import { withMobx } from '@hoc'
 import App, { AppProps, AppInitialProps, AppContext } from 'next/app'
 import { Provider, useStaticRendering } from 'mobx-react'
-import * as getStores from '../Stores'
+import { ThemeProvider, CSSReset } from '@chakra-ui/core'
 
 // @ts-ignore
 const isServer = !process.browser
@@ -36,9 +36,12 @@ class RootElement extends App<RootElementProps> {
     }
 
     return (
+      <ThemeProvider>
+        <CSSReset />
       <Provider {...store}>
         <Component {...pageProps} />
       </Provider>
+      </ThemeProvider>
     )
   }
 }
