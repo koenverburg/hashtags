@@ -1,9 +1,10 @@
 import React from 'react'
 import ErrorPage from 'next/error'
-import { withMobx } from '@hoc'
 import App, { AppProps, AppInitialProps, AppContext } from 'next/app'
+// import { withMobx } from '@hoc'
 import { Provider, useStaticRendering } from 'mobx-react'
 import { ThemeProvider, CSSReset } from '@chakra-ui/core'
+// import * as getStores from '../Stores'
 
 // @ts-ignore
 const isServer = !process.browser
@@ -38,13 +39,13 @@ class RootElement extends App<RootElementProps> {
     return (
       <ThemeProvider>
         <CSSReset />
-      <Provider {...store}>
-        <Component {...pageProps} />
-      </Provider>
+        <Provider {...store}>
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     )
   }
 }
 
-export default withMobx(getStores)(RootElement)
-// export default RootElement
+// export default withMobx(getStores)(RootElement)
+export default RootElement
