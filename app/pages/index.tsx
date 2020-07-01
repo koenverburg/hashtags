@@ -6,7 +6,7 @@ import * as F from '@features'
 export const config = { amp: 'hybrid' }
 
 const Home = () => (
-  <div className="container-fluid">
+  <div className="container">
     <div className="row">
       <div className="col-xs-12 col-md-8">
         <F.Collector />
