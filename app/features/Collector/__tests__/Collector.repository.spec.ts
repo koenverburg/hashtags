@@ -1,5 +1,4 @@
 import { CollectorRepository } from '../Collector.repository'
-import { CollectorModel } from '../models/Collector.model'
 
 describe('Collector - repository', () => {
   let repository: CollectorRepository
@@ -9,11 +8,15 @@ describe('Collector - repository', () => {
   })
 
   it('should find an entity', () => {
-    expect(repository.find(1)).toEqual(new CollectorModel())
+    expect(repository.find(1)).toEqual('')
   })
 
-  it('should return a response', () => {
-    expect(repository.list()).toEqual(Promise.prototype)
+  it('should look up a list by name', () => {
+    expect(repository.listByCategory('scratchpad')).toEqual(['', ''])
+  })
+
+  it('should give back the top list', () => {
+    expect(repository.list()).toEqual(['', ''])
   })
 
   describe('follows the Repository pattern', () => {

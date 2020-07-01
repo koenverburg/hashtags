@@ -1,9 +1,12 @@
 import Axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios'
 import { IRepository } from '../../base/interfaces/IRepository'
-import { CollectorModel } from './models/Collector.model'
 import { Storage } from '@helpers'
 
-export class CollectorRepository implements IRepository<CollectorModel> {
+interface ICollectorRepository<T> extends IRepository<T> {
+  listByCategory(v: string): T[]
+}
+
+export class CollectorRepository implements ICollectorRepository<string> {
   constructor() {
     this.storage = new Storage('collector')
     const config = {
@@ -14,10 +17,14 @@ export class CollectorRepository implements IRepository<CollectorModel> {
   private storage: Storage
   private http: AxiosInstance
 
-  public list(): any {
-    console.log(this.storage.get('tags'))
+  public listByCategory(name: string): any {
+    // console.log(this.storage.get('tags'))
+    return ['', '']
+  }
 
-    return { data: this.storage.get('tags') }
+  public list(): any {
+    // console.log(this.storage.get('tags'))
+    return ['', '']
   }
 
   public add(entity: {} | [] | string) {
@@ -30,6 +37,6 @@ export class CollectorRepository implements IRepository<CollectorModel> {
     throw new Error('Method not implemented.')
   }
   public find(id: number) {
-    return new CollectorModel()
+    return ''
   }
 }

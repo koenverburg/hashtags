@@ -1,14 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App component render 1`] = `
-<main>
-  <article>
-    <h1>
-      The base
-    </h1>
-    <p>
-      The base is my boilerplate in which I have a bullet prove framework where I can work with for my projects.
-    </p>
-  </article>
-</main>
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-xs-12 col-md-8"
+    >
+      <Memo(wrappedComponent) />
+    </div>
+  </div>
+</div>
 `;

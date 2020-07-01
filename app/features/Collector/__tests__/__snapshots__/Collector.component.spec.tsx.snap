@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`feature - <Collector /> renders 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": CollectorStore {
+        "entities": undefined,
+        "error": undefined,
+        "status": "idle",
+      },
+    }
+  }
+>
+  <Memo(wrappedComponent) />
+</ContextProvider>
+`;
