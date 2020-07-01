@@ -1,43 +1,29 @@
-import React, { Fragment, Component } from 'react'
-import { observer, inject } from 'mobx-react'
+import React, { Fragment, Component, FormEvent } from 'react'
+import { observer } from 'mobx-react-lite'
 import { CollectorStore } from './Collector.store'
-import { IBaseMobxProps } from '../../base/interfaces/IMobBaseProps'
-import { Textarea } from '@components'
+import { Textarea } from '@chakra-ui/core'
+import { useCollectorStore } from './useCollector.store'
 
-interface ICollectorProps extends IBaseMobxProps {
-  collector?: CollectorStore
-}
+export const Collector = observer(() => {
+  const store = useCollectorStore()
 
-@inject('collector')
-@observer
-export class Collector extends Component<ICollectorProps> {
+  const handleChange = (event: FormEvent<EventTarget>) =>
+    // @ts-ignore
+    store.setData(event.target.value)
 
-  private handleChange = (event: Event) => {
-    const tags = event.target.value.trim().split(' ')
-    const value = this.props.collector!.deduplicate(tags)
-    console.log(value)
-    this.props.collector!.saveData(value)
-  }
+  return (
+    <>
+      <Textarea
+        value={store.entities}
+        onChange={handleChange}
+        placeholder="#hashtag #dedup"
+      />
 
-  public componentDidMount() {
-    const { collector } = this.props
-    if (!collector!.any()) collector!.fetch()
-  }
+      Total tag count {store.tags.length}, limit is 30 tags for Facebook Creator Studio
 
-  public render() {
-    const { children, collector } = this.props
-    return (
-      <>
-        <Textarea handleChange={this.handleChange} />
-        {collector!.IsRejected && collector!.error ? collector!.error.message : null}
-        {collector!.IsFulfilled && !collector!.any() && 'No Items'}
-        {collector!.IsFulfilled && collector!.any() &&
-          collector!.entities.map(item => (
-            <li key={item.tag}>{item.tag}</li>
-          ))
-        }
-      </>
-    )
-  }
-}
-
+      <ul>
+        {store.tags.map(tag => <li key={tag}>{tag}</li>)}
+      </ul>
+    </>
+  )
+})
