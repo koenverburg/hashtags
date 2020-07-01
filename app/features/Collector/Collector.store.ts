@@ -1,18 +1,34 @@
-import { action } from 'mobx'
+import { action, computed } from 'mobx'
 import { CollectorRepository } from './Collector.repository'
-import { CollectorModel } from './models/Collector.model'
 import { Statuses } from '@enums'
-import { StoreHelper, NextMobx  } from '@helpers'
+import { StoreHelper } from '@helpers'
 import { IInitialState } from '../../base/interfaces/IInitialState'
 
 const repository = new CollectorRepository()
 
-export class CollectorStore extends StoreHelper<CollectorModel[]> {
-  constructor(initialState?: IInitialState<CollectorModel[]>) {
+export const localInitialState: IInitialState<string> = {
+  status: Statuses.IDLE,
+  entities: '',
+}
+
+export class CollectorStore extends StoreHelper<string> {
+
+  constructor(initialState?: IInitialState<string>) {
     super(initialState)
   }
 
-  public deduplicate(list: string[]): CollectorModel[] {
+  @computed get tags() {
+    if (!this.entities) return []
+
+    const list = this.entities.trim().split(' ')
+    const deduplicatedList = this.deduplicate(list)
+
+    return deduplicatedList
+  }
+
+  // private checkForHashtagPrefix() { }
+
+  private deduplicate(list: string[]): string[] {
     const cleanList = list
       .map(item => item.trim())
       .filter(item => item.length > 0)
@@ -23,13 +39,11 @@ export class CollectorStore extends StoreHelper<CollectorModel[]> {
       [],
     )
 
-    const collectorsList = sortedList.map(item => ({ tag: item }))
-
-    return collectorsList
+    return sortedList
   }
 
-  public saveData(entity: CollectorModel[]) {
-    repository.add(entity)
+  public saveData(entity: string) {
+    // repository.add(entity)
     this.setData(entity)
   }
 
@@ -40,5 +54,3 @@ export class CollectorStore extends StoreHelper<CollectorModel[]> {
     if (response) this.setData(response.data)
   }
 }
-
-export const getCollectorStore = NextMobx.getOrCreateStore('collector', CollectorStore)
