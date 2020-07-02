@@ -2,14 +2,12 @@ import { action } from 'mobx'
 import { Statuses } from '@enums'
 import { IInitialState } from '../../../interfaces/IInitialState'
 import { StoreHelper } from '../../StoreHelper'
-import * as NextMobx from '../../NextMobxUtils'
-import { MockModel } from './Mock.model'
 import { MockRepository } from './Mock.repository'
 
 const repository = new MockRepository()
 
-export class MockStoreArr extends StoreHelper<MockModel[]> {
-  constructor(initialState?: IInitialState<MockModel[]>) {
+export class MockStoreArr extends StoreHelper<string[]> {
+  constructor(initialState?: IInitialState<string[]>) {
     super(initialState)
   }
 
@@ -21,5 +19,3 @@ export class MockStoreArr extends StoreHelper<MockModel[]> {
     if (error) this.setError(error)
   }
 }
-
-export const getDomainStore = NextMobx.getOrCreateStore('mock', MockStoreArr)

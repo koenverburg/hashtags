@@ -1,8 +1,7 @@
 import Axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios'
 import { IRepository } from '../../../interfaces/IRepository'
-import { MockModel } from '../__mocks__/Mock.model'
 
-export class MockRepository implements IRepository<MockModel> {
+export class MockRepository implements IRepository<string[]> {
 
   constructor() {
     const config = {
@@ -17,7 +16,7 @@ export class MockRepository implements IRepository<MockModel> {
   public list(): any {
     return this.http
       .get('mocks')
-      .then((response: AxiosResponse<MockModel>) => ({ response }))
+      .then((response: AxiosResponse<string[]>) => ({ response }))
       .catch((error: AxiosError) => ({ error }))
   }
 
@@ -31,6 +30,6 @@ export class MockRepository implements IRepository<MockModel> {
     throw new Error('Method not implemented.')
   }
   public find(id: number) {
-    return new MockModel()
+    return ['']
   }
 }
