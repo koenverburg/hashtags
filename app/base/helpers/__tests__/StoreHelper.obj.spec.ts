@@ -8,10 +8,6 @@ describe('StoreHelper', () => {
     store = new MockStoreObj()
   })
 
-  it('should have an update method for nextmobx', () => {
-    expect(store.update).toBeDefined()
-  })
-
   it('should have an fetch method', () => {
     expect(store.fetch).toBeDefined()
   })

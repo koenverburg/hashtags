@@ -9,11 +9,6 @@ describe('StoreHelper', () => {
   beforeEach(() => {
     store = new MockStoreArr()
   })
-
-  it('should have an update method for nextmobx', () => {
-    expect(store.update).toBeDefined()
-  })
-
   it('should have an fetch method', () => {
     expect(store.fetch).toBeDefined()
   })
@@ -29,8 +24,9 @@ describe('StoreHelper', () => {
 
   it('setData method - should handle an array as entity', () => {
     const mockEntityArr = [
-      { id: 1, name: 'Koen', length: 0 },
-      { id: 2, name: 'verburg', length: 0 },
+      'Monitor',
+      'desk',
+      'mouse',
     ]
     store.setData(mockEntityArr)
 
@@ -41,8 +37,9 @@ describe('StoreHelper', () => {
 
   it('should say return true on .any()', () => {
     const mockEntityArr = [
-      { id: 1, name: 'Koen', length: 0 },
-      { id: 2, name: 'verburg', length: 0 },
+      'Monitor',
+      'desk',
+      'mouse',
     ]
     store.setData(mockEntityArr)
 
