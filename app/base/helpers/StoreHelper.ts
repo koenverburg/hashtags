@@ -20,9 +20,8 @@ export abstract class StoreHelper<EntityType> extends StatusHelper implements IB
     if (!this.entities) return false
 
     if (
-      typeof this.entities === 'object' &&
-      (this.entities as unknown as object).hasOwnProperty('push') &&
-      (this.entities as unknown as object).hasOwnProperty('length')
+      typeof this.entities === 'object'
+      && (this.entities as unknown as object).hasOwnProperty('length')
     ) {
       // @ts-ignore
       return this.entities.length > 0
