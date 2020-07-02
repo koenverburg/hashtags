@@ -4,7 +4,6 @@ import { AxiosError } from 'axios'
 import { IBaseStore } from '../interfaces/IBaseStore'
 import { IInitialState } from '../interfaces/IInitialState'
 import { StatusHelper } from './StatusHelper'
-import { NextMobx } from '@helpers'
 
 // tslint:disable-next-line: ban-types
 export abstract class StoreHelper<EntityType> extends StatusHelper implements IBaseStore {
@@ -17,17 +16,20 @@ export abstract class StoreHelper<EntityType> extends StatusHelper implements IB
 
   public abstract fetch(): void
 
-  // public any(): boolean {
-  // //   if (!this.entities) {
-  // //     return false
-  // //   }
+  public any(): boolean {
+    if (!this.entities) return false
 
-  // //   if (this.entities.length) {
-  // //     return this.entities.length > 0
-  // //   }
+    if (
+      typeof this.entities === 'object' &&
+      (this.entities as unknown as object).hasOwnProperty('push') &&
+      (this.entities as unknown as object).hasOwnProperty('length')
+    ) {
+      // @ts-ignore
+      return this.entities.length > 0
+    }
 
-  //   return false
-  // }
+    return false
+  }
 
   @action.bound public setData(entities: EntityType) {
     this.entities = entities
