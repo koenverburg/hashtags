@@ -4,7 +4,6 @@ import App, { AppProps, AppInitialProps, AppContext } from 'next/app'
 // import { withMobx } from '@hoc'
 import { Provider, useStaticRendering } from 'mobx-react'
 import { ThemeProvider, CSSReset } from '@chakra-ui/core'
-// import * as getStores from '../Stores'
 
 // @ts-ignore
 const isServer = !process.browser
