@@ -1,0 +1,12 @@
+{
+  "name": "hashtags",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:koenverburg/hashtags.git",
+  "author": "Koen Verburg <creativekoen@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "human-readable-numbers": "^0.9.5",
+    "isomorphic-fetch": "^3.0.0"
+  }
+}
