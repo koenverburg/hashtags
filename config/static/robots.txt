@@ -1,5 +1,0 @@
-Sitemap: https://koenverburg.dev/sitemap.xml
-User-agent: *
-allow: /
-User-agent: googlebot
-Disallow: /humans.txt

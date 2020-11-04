@@ -1,7 +1,0 @@
-{
-  "defaults": {
-    "standard": "WCAG2AA"
-  },
-  "urls": ["localhost:8000"],
-  "reporter": "html"
-}

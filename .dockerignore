@@ -1,7 +1,0 @@
-public
-node_modules
-Dockerfile
-.gitignore
-.git
-.next
-*.log

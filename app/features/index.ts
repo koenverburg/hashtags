@@ -1,1 +1,0 @@
-export { Collector } from './Collector'
